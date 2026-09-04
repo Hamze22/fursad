@@ -1,6 +1,2 @@
-# Cloudflare Pages Configuration
 name = "fursad-scholarships"
 pages_build_output_dir = "dist"
-
-[build]
-command = "npm run build"
