@@ -1,0 +1,96 @@
+{
+  "collections": {
+    "profiles": {
+      "description": "User profiles and settings",
+      "fields": {
+        "id": "string",
+        "name": "string",
+        "email": "string",
+        "role": "string",
+        "avatar": "string",
+        "countryOrigin": "string",
+        "currentCountry": "string",
+        "currentCity": "string",
+        "educationLevel": "string",
+        "fieldOfStudy": "string",
+        "graduationYear": "number",
+        "skills": "array",
+        "languages": "array",
+        "hasIelts": "boolean",
+        "hasToefl": "boolean",
+        "hasMoiCertificate": "boolean",
+        "preferredCountries": "array",
+        "preferredCategories": "array",
+        "fundingPreference": "string",
+        "careerGoals": "string",
+        "profileStrength": "number",
+        "subscription": "string",
+        "notificationsEnabled": "boolean",
+        "savedOppIds": "array",
+        "updatedAt": "timestamp"
+      }
+    },
+    "opportunities": {
+      "description": "Scholarships, internships, and fellowships",
+      "fields": {
+        "id": "string",
+        "title": "string",
+        "organization": "string",
+        "category": "string",
+        "country": "string",
+        "city": "string",
+        "fundingType": "string",
+        "degreeLevel": "array",
+        "field": "array",
+        "summary": "string",
+        "description": "string",
+        "eligibility": "array",
+        "financialBenefits": "array",
+        "requiredDocuments": "array",
+        "deadline": "string",
+        "applicationUrl": "string",
+        "sourceUrl": "string",
+        "moiAccepted": "boolean",
+        "ieltsRequired": "boolean",
+        "verificationStatus": "string",
+        "featured": "boolean",
+        "createdAt": "timestamp",
+        "updatedAt": "timestamp"
+      }
+    },
+    "applications": {
+      "description": "User application tracking items",
+      "fields": {
+        "id": "string",
+        "userId": "string",
+        "opportunityId": "string",
+        "opportunityTitle": "string",
+        "organization": "string",
+        "country": "string",
+        "flag": "string",
+        "category": "string",
+        "fundingType": "string",
+        "deadline": "string",
+        "applicationUrl": "string",
+        "status": "string",
+        "checklist": "array",
+        "notes": "string",
+        "createdAt": "timestamp",
+        "updatedAt": "timestamp"
+      }
+    },
+    "reports": {
+      "description": "User reports for inaccurate opportunities",
+      "fields": {
+        "id": "string",
+        "opportunityId": "string",
+        "opportunityTitle": "string",
+        "reason": "string",
+        "details": "string",
+        "userEmail": "string",
+        "status": "string",
+        "createdAt": "timestamp"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "FURSAD",
+  "description": "Global Youth Opportunity & Discovery Platform - Your Future Has No Borders",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
