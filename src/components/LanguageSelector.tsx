@@ -61,7 +61,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
                   {t.common.language}
                 </span>
                 <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-md bg-blue-100 text-blue-800">
-                  {currentLanguageOption.flag} {currentLanguageOption.nativeName}
+                  {currentLanguageOption.nativeName}
                 </span>
               </div>
               <span className="text-[10px] text-slate-500 font-medium truncate">
@@ -95,7 +95,6 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
                     }`}
                   >
                     <div className="flex items-center gap-2 min-w-0">
-                      <span className="text-base shrink-0 leading-none">{lang.flag}</span>
                       <span className={`text-xs ${isSelected ? 'font-black text-blue-950' : 'text-slate-800 font-semibold'}`}>
                         {lang.nativeName}
                       </span>
@@ -134,7 +133,6 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
               }`}
             >
               <div className="flex items-center gap-2.5 min-w-0">
-                <span className="text-xl shrink-0">{lang.flag}</span>
                 <div className="flex flex-col min-w-0">
                   <span className={`text-xs truncate ${isSelected ? 'font-black text-blue-950' : 'font-bold text-slate-800'}`}>
                     {lang.nativeName}
@@ -173,7 +171,6 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
                   : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
               }`}
             >
-              <span>{lang.flag}</span>
               <span>{lang.nativeName}</span>
             </button>
           );
@@ -199,7 +196,6 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         title="Select Language / Dooro Luuqadda / اختر اللغة"
       >
         <Globe2 className="w-4 h-4 text-blue-600 shrink-0" />
-        <span className="text-base leading-none">{currentLanguageOption.flag}</span>
         <span className="font-extrabold text-xs text-slate-900 hidden sm:inline">
           {currentLanguageOption.nativeName}
         </span>
@@ -239,7 +235,6 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
-                    <span className="text-lg leading-none">{lang.flag}</span>
                     <div className="flex flex-col">
                       <span className="leading-tight">{lang.nativeName}</span>
                       <span className="text-[10px] text-slate-400 font-normal">

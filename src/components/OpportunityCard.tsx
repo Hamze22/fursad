@@ -149,7 +149,7 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
       {/* Left Thumbnail Image (Top on Laptop) */}
       <div 
         onClick={() => onViewDetails(opportunity)}
-        className="w-20 h-20 sm:w-24 sm:h-24 lg:w-full lg:h-48 aspect-square lg:aspect-video rounded-xl sm:rounded-2xl lg:rounded-xl overflow-hidden shrink-0 relative bg-slate-100 cursor-pointer shadow-2xs"
+        className="w-20 h-20 sm:w-24 sm:h-24 lg:w-full lg:h-52 xl:h-60 aspect-square lg:aspect-video rounded-xl sm:rounded-2xl lg:rounded-xl overflow-hidden shrink-0 relative bg-slate-100 cursor-pointer shadow-2xs"
       >
         <img
           src={thumbUrl}

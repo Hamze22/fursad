@@ -552,8 +552,10 @@ async function startServer() {
       const skippedDuplicates = Math.floor(Math.random() * 40) + 10;
 
       source.recordsImported += newRecs;
+      source.totalIngested = source.recordsImported;
       source.activeOpportunities += newRecs - expiredRecs;
       source.lastSync = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+      source.lastSynced = source.lastSync;
       source.status = 'active';
 
       const log: SyncLog = {

@@ -1,2 +1,4 @@
+# Cloudflare Pages Configuration
 name = "fursad-scholarships"
 pages_build_output_dir = "dist"
+compatibility_date = "2024-09-04"

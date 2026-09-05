@@ -86,11 +86,15 @@ export const initialDataSources: DataSource[] = [
     type: 'api',
     status: 'active',
     lastSync: '2026-08-30 00:15 UTC',
+    lastSynced: '2026-08-30 00:15 UTC',
     recordsImported: 4120,
+    totalIngested: 4120,
     activeOpportunities: 284,
     endpointUrl: 'https://api.tech.ec.europa.eu/funding-tenders/v1/opportunities',
+    url: 'https://api.tech.ec.europa.eu/funding-tenders/v1/opportunities',
     description: 'Official API feed for Erasmus+, Horizon Europe, Youth in Action, and European Solidarity Corps funding programmes.',
-    syncFrequencyHours: 6
+    syncFrequencyHours: 6,
+    syncFrequency: 'Every 6 hours'
   },
   {
     id: 'src-grants-gov',
@@ -98,11 +102,15 @@ export const initialDataSources: DataSource[] = [
     type: 'api',
     status: 'active',
     lastSync: '2026-08-30 00:10 UTC',
+    lastSynced: '2026-08-30 00:10 UTC',
     recordsImported: 8930,
+    totalIngested: 8930,
     activeOpportunities: 195,
     endpointUrl: 'https://api.grants.gov/v1/opportunities/search',
+    url: 'https://api.grants.gov/v1/opportunities/search',
     description: 'Direct federal US government opportunities, State Department academic exchanges, and international youth leadership grants.',
-    syncFrequencyHours: 6
+    syncFrequencyHours: 6,
+    syncFrequency: 'Every 6 hours'
   },
   {
     id: 'src-reliefweb-api',
@@ -110,11 +118,15 @@ export const initialDataSources: DataSource[] = [
     type: 'api',
     status: 'active',
     lastSync: '2026-08-29 23:45 UTC',
+    lastSynced: '2026-08-29 23:45 UTC',
     recordsImported: 6240,
+    totalIngested: 6240,
     activeOpportunities: 312,
     endpointUrl: 'https://api.reliefweb.int/v1/jobs?appname=fursad-youth',
+    url: 'https://api.reliefweb.int/v1/jobs?appname=fursad-youth',
     description: 'UN and international humanitarian organizations fellowship, entry-level internship, and training opportunities worldwide.',
-    syncFrequencyHours: 6
+    syncFrequencyHours: 6,
+    syncFrequency: 'Every 6 hours'
   },
   {
     id: 'src-daad-official',
@@ -122,11 +134,15 @@ export const initialDataSources: DataSource[] = [
     type: 'curated_feed',
     status: 'active',
     lastSync: '2026-08-30 00:00 UTC',
+    lastSynced: '2026-08-30 00:00 UTC',
     recordsImported: 1840,
+    totalIngested: 1840,
     activeOpportunities: 148,
     endpointUrl: 'https://www2.daad.de/deutschland/stipendien/datenbank/feed',
+    url: 'https://www2.daad.de/deutschland/stipendien/datenbank/feed',
     description: 'Verified German university development scholarships, EPOS programs, Helmut Schmidt programmes, and research stipends.',
-    syncFrequencyHours: 12
+    syncFrequencyHours: 12,
+    syncFrequency: 'Every 12 hours'
   },
   {
     id: 'src-chevening-uk',
@@ -134,11 +150,15 @@ export const initialDataSources: DataSource[] = [
     type: 'curated_feed',
     status: 'active',
     lastSync: '2026-08-29 22:30 UTC',
+    lastSynced: '2026-08-29 22:30 UTC',
     recordsImported: 1420,
+    totalIngested: 1420,
     activeOpportunities: 116,
     endpointUrl: 'https://www.chevening.org/api/v1/scholarships-catalog',
+    url: 'https://www.chevening.org/api/v1/scholarships-catalog',
     description: 'UK government international postgraduate awards, Commonwealth fellowships, and GREAT scholarships.',
-    syncFrequencyHours: 12
+    syncFrequencyHours: 12,
+    syncFrequency: 'Every 12 hours'
   },
   {
     id: 'src-un-volunteers',
@@ -146,11 +166,15 @@ export const initialDataSources: DataSource[] = [
     type: 'api',
     status: 'active',
     lastSync: '2026-08-30 00:05 UTC',
+    lastSynced: '2026-08-30 00:05 UTC',
     recordsImported: 3560,
+    totalIngested: 3560,
     activeOpportunities: 230,
     endpointUrl: 'https://app.unv.org/api/v2/opportunities',
+    url: 'https://app.unv.org/api/v2/opportunities',
     description: 'UN Youth Volunteer and national/international youth deployments across UNDP, UNICEF, UNHCR, WHO, and WFP.',
-    syncFrequencyHours: 6
+    syncFrequencyHours: 6,
+    syncFrequency: 'Every 6 hours'
   }
 ];
 
@@ -335,5 +359,15 @@ export const initialCountryStats: CountryStat[] = [
     fullyFundedCount: 190,
     topScholarships: ['Swedish Institute (SI) Scholarships for Global Professionals', 'Erasmus Mundus Sweden Tracks', 'KTH India/Global'],
     visaGuide: 'Residence permit for higher education issued via Swedish Migration Agency (Migrationsverket).'
+  },
+  {
+    country: 'Somaliland',
+    code: 'SL',
+    flag: '',
+    region: 'Africa',
+    opportunityCount: 15,
+    fullyFundedCount: 10,
+    topScholarships: ['Fursad Somaliland Scholars', 'Hargeisa Hub Fellowships', 'Chevening Somaliland'],
+    visaGuide: 'Direct scholarship facilitation via Hargeisa local partners and international host universities.'
   }
 ];

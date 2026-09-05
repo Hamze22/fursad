@@ -107,7 +107,7 @@ export const OpportunityDetailView: React.FC<OpportunityDetailViewProps> = ({
   const daysLeft = calculateDaysLeft(opportunity.deadline);
 
   return (
-    <div className="w-full max-w-[1600px] mx-auto px-3.5 sm:px-6 py-6 sm:py-8 space-y-6 animate-in fade-in duration-200" id="opportunity-detail-page-view">
+    <div className="w-full mx-auto px-3.5 sm:px-6 py-6 sm:py-8 space-y-6 animate-in fade-in duration-200" id="opportunity-detail-page-view">
       
       {/* Top Breadcrumb Bar with Back Button */}
       <div className="flex items-center justify-between gap-4 border-b border-slate-200/80 pb-4">

@@ -56,14 +56,14 @@ export const supabase: SupabaseClient = isSupabaseConfigured
       }
     });
 
-export const PROJECT_OWNER_EMAILS = ['somfxstore@gmail.com', 'hamze.zakarie@gmail.com'];
+export const PROJECT_OWNER_EMAILS = ['hamze.zakarie@gmail.com'];
 export const isProjectOwner = (email?: string): boolean => {
   if (!email) return false;
   const clean = email.toLowerCase().trim();
   return PROJECT_OWNER_EMAILS.some(e => e.toLowerCase() === clean);
 };
 
-export const PROJECT_OWNER_EMAIL = 'somfxstore@gmail.com';
+export const PROJECT_OWNER_EMAIL = 'hamze.zakarie@gmail.com';
 
 export default supabase;
 

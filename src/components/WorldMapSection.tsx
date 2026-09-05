@@ -25,7 +25,7 @@ export const WorldMapSection: React.FC<WorldMapSectionProps> = ({
 
   return (
     <section className="py-8 sm:py-14 bg-white border-b border-slate-200/80" id="world-explore-section">
-      <div className="w-full max-w-[1600px] mx-auto px-3 sm:px-6 space-y-6 sm:space-y-8">
+      <div className="w-full mx-auto px-3 sm:px-6 space-y-6 sm:space-y-8">
         
         {/* Section Header with 3D Globe & Scholars Located */}
         <div className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-10 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
@@ -110,7 +110,7 @@ export const WorldMapSection: React.FC<WorldMapSectionProps> = ({
         </div>
 
         {/* Dynamic Country Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6 max-w-7xl mx-auto">
           {filteredCountries.map((stat) => (
             <div
               key={stat.code}

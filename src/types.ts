@@ -112,6 +112,7 @@ export interface UserProfile {
   subscription: SubscriptionPlan;
   subscriptionExpiry?: string;
   notificationsEnabled: boolean;
+  accountStatus?: 'active' | 'banned' | 'suspended';
   savedOppIds?: string[];
   createdAt?: string;
   updatedAt?: string;
@@ -170,13 +171,17 @@ export interface DataSource {
   id: string;
   name: string;
   type: 'api' | 'rss' | 'curated_feed' | 'partner';
-  status: 'active' | 'syncing' | 'error' | 'disabled';
+  status: 'active' | 'syncing' | 'error' | 'disabled' | 'healthy';
   lastSync: string;
+  lastSynced?: string;
   recordsImported: number;
+  totalIngested?: number;
   activeOpportunities: number;
   endpointUrl: string;
+  url?: string;
   description: string;
   syncFrequencyHours: number;
+  syncFrequency?: string;
 }
 
 export interface SyncLog {
@@ -215,6 +220,20 @@ export interface CountryStat {
   fullyFundedCount: number;
   topScholarships: string[];
   visaGuide: string;
+}
+
+export interface Payment {
+  id: string;
+  userId: string;
+  userName: string;
+  userEmail: string;
+  amount: number;
+  currency: string;
+  plan: SubscriptionPlan;
+  status: 'completed' | 'pending' | 'failed' | 'refunded';
+  paymentMethod: string;
+  transactionId: string;
+  timestamp: string;
 }
 
 export interface OpportunityReport {

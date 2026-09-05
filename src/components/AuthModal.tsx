@@ -137,9 +137,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
   // Quick Owner Fill Helper
   const handleOwnerDemoFill = () => {
-    setEmail('somfxstore@gmail.com');
-    setPassword('somfx@2026');
-    setName('Somalia FX Store (Owner)');
+    setEmail('hamze.zakarie@gmail.com');
+    setPassword('hamze@2026');
+    setName('Hamze Zakarie (Owner)');
     setMode('login');
   };
 
@@ -455,7 +455,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             <div className="flex items-center gap-2">
               <Crown className="w-4 h-4 text-blue-600" />
               <div>
-                <p className="text-xs font-black text-blue-950">Project Owner (somfxstore@gmail.com)</p>
+                <p className="text-xs font-black text-blue-950">Project Owner (hamze.zakarie@gmail.com)</p>
                 <p className="text-[10px] text-blue-800">Has full admin privileges & database control</p>
               </div>
             </div>

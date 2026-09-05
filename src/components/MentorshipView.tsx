@@ -42,7 +42,7 @@ export const MentorshipView: React.FC<MentorshipViewProps> = ({
   };
 
   return (
-    <div className="w-full max-w-[1600px] mx-auto px-3.5 sm:px-6 py-6 sm:py-10 space-y-8 sm:space-y-12" id="mentorship-view">
+    <div className="w-full mx-auto px-3.5 sm:px-6 py-6 sm:py-10 space-y-8 sm:space-y-12" id="mentorship-view">
       
       {/* Top Banner */}
       <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-blue-950 text-white shadow-xl space-y-3 sm:space-y-4">

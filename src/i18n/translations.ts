@@ -5,28 +5,28 @@ export const SUPPORTED_LANGUAGES: LanguageOption[] = [
     code: 'so',
     name: 'Somali',
     nativeName: 'Soomaali',
-    flag: '🇸🇴',
+    flag: '',
     dir: 'ltr'
   },
   {
     code: 'en',
     name: 'English',
     nativeName: 'English',
-    flag: '🇬🇧',
+    flag: '',
     dir: 'ltr'
   },
   {
     code: 'ar',
     name: 'Arabic',
     nativeName: 'العربية',
-    flag: '🇸🇦',
+    flag: '',
     dir: 'rtl'
   },
   {
     code: 'fr',
     name: 'French',
     nativeName: 'Français',
-    flag: '🇫🇷',
+    flag: '',
     dir: 'ltr'
   }
 ];

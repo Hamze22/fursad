@@ -18,7 +18,7 @@ import { SavedOpportunitiesView } from './components/SavedOpportunitiesView';
 import { MentorshipView } from './components/MentorshipView';
 import { PricingView } from './components/PricingView';
 import { ProfileSettingsView } from './components/ProfileSettingsView';
-import { AdminDashboardModal } from './components/AdminDashboardModal';
+import { AdminDashboardView } from './components/AdminDashboardView';
 import { ReportModal } from './components/ReportModal';
 import { ProfileView } from './components/ProfileView';
 import { OnboardingModal } from './components/OnboardingModal';
@@ -127,7 +127,7 @@ function AppContent() {
               id: userId,
               name: googleName,
               email: authUser.email || '',
-              role: (authUser.email === 'somfxstore@gmail.com' || authUser.email === 'hamze.zakarie@gmail.com') ? 'owner' : 'user',
+              role: authUser.email === 'hamze.zakarie@gmail.com' ? 'owner' : 'user',
               avatar: googleAvatar,
               countryOrigin: 'Somalia',
               currentCountry: 'Somalia',
@@ -145,7 +145,7 @@ function AppContent() {
               fundingPreference: 'fully_funded',
               careerGoals: 'Pursuing global scholarships & leadership opportunities.',
               profileStrength: 80,
-              subscription: (authUser.email === 'somfxstore@gmail.com' || authUser.email === 'hamze.zakarie@gmail.com') ? 'pro' : 'free',
+              subscription: authUser.email === 'hamze.zakarie@gmail.com' ? 'pro' : 'free',
               notificationsEnabled: true,
               savedOppIds: []
             };
@@ -255,6 +255,10 @@ function AppContent() {
       setSelectedCategory('exchange');
     } else if (tab === 'home') {
       setSelectedCategory('all');
+    }
+    // Handle admin tab specifically if needed
+    if (tab === 'admin') {
+      // Admin page logic
     }
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
@@ -471,7 +475,7 @@ function AppContent() {
             />
 
             {/* Featured Opportunities Feed & Directory */}
-            <section className="w-full max-w-[1600px] mx-auto px-3 sm:px-6 py-5 sm:py-8 space-y-4" id="opportunities-feed">
+            <section className="w-full mx-auto px-3 sm:px-6 py-5 sm:py-8 space-y-4" id="opportunities-feed">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
                   <h2 className="text-lg sm:text-xl font-black text-slate-950 tracking-tight">
@@ -556,7 +560,7 @@ function AppContent() {
                   <p className="text-sm font-bold text-slate-700">{t.common.loading}</p>
                 </div>
               ) : filteredOpportunities.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6">
                   {filteredOpportunities.slice(0, visibleCount).map((opp) => (
                     <OpportunityCard
                       key={opp.id}
@@ -651,7 +655,7 @@ function AppContent() {
 
             {/* AI Advisor Promotion Banner */}
             {currentTab === 'home' && (
-              <section className="w-full max-w-[1600px] mx-auto px-3 sm:px-6 py-8">
+              <section className="w-full mx-auto px-3 sm:px-6 py-8">
                 <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
                   <div className="space-y-3 max-w-xl text-left">
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-blue-300 text-xs font-black uppercase tracking-wider border border-white/20">
@@ -771,7 +775,7 @@ function AppContent() {
             onBack={() => handleTabChange('home')}
             onOpenPricing={() => handleTabChange('pricing')}
             onOpenProfileSettings={() => handleTabChange('profile-settings')}
-            onOpenAdmin={() => setIsAdminModalOpen(true)}
+            onOpenAdmin={() => handleTabChange('admin')}
             onNavigateToTab={handleTabChange}
             isLoggedIn={isLoggedIn}
             onOpenAuth={(mode) => {
@@ -786,17 +790,24 @@ function AppContent() {
             stories={successStories}
             userProfile={userProfile}
           />
+        ) : currentTab === 'admin' ? (
+          <AdminDashboardView
+            onBack={() => handleTabChange('home')}
+            opportunities={opportunities}
+            onOpportunityCreated={(newOpp) => setOpportunities([newOpp, ...opportunities])}
+            onOpportunityDeleted={(id) => setOpportunities(opportunities.filter(o => o.id !== id))}
+          />
         ) : null}
       </main>
 
       {/* Footer */}
       {currentTab !== 'profile' && currentTab !== 'profile-settings' && currentTab !== 'pricing' && currentTab !== 'auth' && currentTab !== 'ai-assistant' && currentTab !== 'matching' && (
         <footer className="bg-slate-950 text-white pt-14 pb-24 lg:pb-12 border-t border-slate-800" id="fursad-footer">
-          <div className="w-full max-w-[1600px] mx-auto px-3 sm:px-6 space-y-10">
+          <div className="w-full mx-auto px-3 sm:px-6 space-y-10">
             
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8 pb-8 border-b border-slate-800">
               {/* Brand column */}
-              <div className="space-y-4 md:col-span-1">
+              <div className="space-y-4 md:col-span-1 2xl:col-span-1">
                 <FursadLogo 
                   size="md" 
                   lightMode={true} 
@@ -842,7 +853,7 @@ function AppContent() {
                 </p>
                 <div className="pt-1 flex items-center gap-2">
                   <button
-                    onClick={() => setIsAdminModalOpen(true)}
+                    onClick={() => handleTabChange('admin')}
                     className="text-xs text-blue-400 hover:text-blue-300 font-bold underline cursor-pointer"
                   >
                     {t.nav.admin}
@@ -872,13 +883,15 @@ function AppContent() {
       )}
 
       {/* Mobile Bottom Navigation */}
-      <MobileBottomNav
-        currentTab={currentTab}
-        onTabChange={handleTabChange}
-        savedCount={savedOppIds.length}
-        applicationCount={applications.length}
-        onOpenProfile={() => handleTabChange('profile')}
-      />
+      {currentTab !== 'admin' && (
+        <MobileBottomNav
+          currentTab={currentTab}
+          onTabChange={handleTabChange}
+          savedCount={savedOppIds.length}
+          applicationCount={applications.length}
+          onOpenProfile={() => handleTabChange('profile')}
+        />
+      )}
 
       {/* MODALS */}
       {/* 1. Onboarding Modal for first-time visitors */}
@@ -910,15 +923,6 @@ function AppContent() {
           setIsAIModalOpen(false);
           setSelectedOpportunity(opp);
         }}
-      />
-
-      {/* 6. Admin Dashboard Modal */}
-      <AdminDashboardModal
-        isOpen={isAdminModalOpen}
-        onClose={() => setIsAdminModalOpen(false)}
-        opportunities={opportunities}
-        onOpportunityCreated={(newOpp) => setOpportunities([newOpp, ...opportunities])}
-        onOpportunityDeleted={(id) => setOpportunities(opportunities.filter(o => o.id !== id))}
       />
 
       {/* 7. Report / Safety Modal */}

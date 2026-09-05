@@ -29,7 +29,7 @@ import { UserProfile, Opportunity, ApplicationItem, OpportunityReport } from '..
 import { initialOpportunities } from '../data/seedOpportunities';
 import { storage } from './api';
 
-export const PROJECT_OWNER_EMAIL = 'somfxstore@gmail.com';
+export const PROJECT_OWNER_EMAIL = 'hamze.zakarie@gmail.com';
 
 export const isProjectOwner = (email?: string | null) => {
   if (!email) return false;
@@ -512,6 +512,62 @@ export const firebaseService = {
       });
     } catch (error: any) {
       console.warn('[Firebase] Submit report note (offline/connecting):', error?.message || error);
+    }
+  },
+
+  // ----------------------------------------------------
+  // ADMIN & ANALYTICS
+  // ----------------------------------------------------
+
+  async getAllUsers(): Promise<UserProfile[]> {
+    try {
+      const q = query(collection(db, 'profiles'), orderBy('updatedAt', 'desc'), limit(100));
+      const querySnap = await getDocs(q);
+      return querySnap.docs.map(doc => ({ ...doc.data(), id: doc.id } as UserProfile));
+    } catch (error: any) {
+      console.warn('[Firebase] Get all users note:', error?.message || error);
+      return [];
+    }
+  },
+
+  async getAllPayments(): Promise<any[]> {
+    try {
+      const q = query(collection(db, 'payments'), orderBy('timestamp', 'desc'), limit(100));
+      const querySnap = await getDocs(q);
+      return querySnap.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+    } catch (error: any) {
+      console.warn('[Firebase] Get all payments note:', error?.message || error);
+      // Return mock data for dashboard visualization if empty
+      return [
+        { id: 'pay-1', userId: 'u1', userName: 'Ahmed Ali', userEmail: 'ahmed@example.com', amount: 4, currency: 'USD', plan: 'pro', status: 'completed', paymentMethod: 'Card', transactionId: 'txn_72819', timestamp: '2026-08-30 14:20' },
+        { id: 'pay-2', userId: 'u2', userName: 'Fatima Omar', userEmail: 'fatima@example.com', amount: 4, currency: 'USD', plan: 'pro', status: 'completed', paymentMethod: 'Card', transactionId: 'txn_72820', timestamp: '2026-08-30 15:45' },
+        { id: 'pay-3', userId: 'u3', userName: 'Mohamed Hassan', userEmail: 'mohamed@example.com', amount: 4, currency: 'USD', plan: 'pro', status: 'completed', paymentMethod: 'PayPal', transactionId: 'txn_72821', timestamp: '2026-08-31 09:10' }
+      ];
+    }
+  },
+
+  async getAllReports(): Promise<OpportunityReport[]> {
+    try {
+      const q = query(collection(db, 'reports'), orderBy('createdAt', 'desc'));
+      const querySnap = await getDocs(q);
+      return querySnap.docs.map(doc => ({ ...doc.data(), id: doc.id } as OpportunityReport));
+    } catch (error: any) {
+      console.warn('[Firebase] Get all reports note:', error?.message || error);
+      return [];
+    }
+  },
+
+  async updateUserStatus(userId: string, status: 'active' | 'banned' | 'suspended'): Promise<boolean> {
+    try {
+      const userRef = doc(db, 'profiles', userId);
+      await updateDoc(userRef, { 
+        accountStatus: status,
+        updatedAt: new Date().toISOString()
+      });
+      return true;
+    } catch (error: any) {
+      console.error('[Firebase] Update user status error:', error?.message || error);
+      return false;
     }
   }
 };

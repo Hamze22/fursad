@@ -52,7 +52,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenAI,
   totalActiveCount,
 }) => {
-  const { t, isRTL } = useLanguage();
+  const { t, isRTL, language } = useLanguage();
   const [showAdvancedFilters, setShowAdvancedFilters] = useState<boolean>(false);
   const [showMoreCategories, setShowMoreCategories] = useState<boolean>(false);
 
@@ -86,27 +86,39 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const hasActiveFilters = selectedDegree !== 'all' || selectedFunding !== 'all' || selectedRegion !== 'all' || moiOnly;
 
   return (
-    <section className="bg-white border-b border-slate-200/80 pt-3 sm:pt-6 pb-5 sm:pb-6 px-3 sm:px-6" id="hero-section" dir={isRTL ? 'rtl' : 'ltr'}>
-      <div className="w-full max-w-[1600px] mx-auto space-y-4 sm:space-y-5">
+    <section className="bg-white border-b border-slate-200/80 pt-3 sm:pt-6 pb-5 sm:pb-6 px-3 sm:px-6 md:px-12 lg:px-20 xl:px-24" id="hero-section" dir={isRTL ? 'rtl' : 'ltr'}>
+      <div className="w-full mx-auto space-y-4 sm:space-y-8">
         
         {/* Top Greeting & Globe Illustration Header */}
-        <div className="flex items-center justify-between gap-4 pb-1">
-          <div className="space-y-1.5 text-left max-w-sm sm:max-w-md">
-            <p className="text-xs sm:text-sm font-bold text-blue-600 flex items-center gap-1.5 uppercase tracking-wider">
+        <div className="flex flex-row items-center justify-between gap-4 sm:gap-12 pb-4 sm:pb-6">
+          <div className="flex-1 space-y-2 sm:space-y-4 text-left min-w-0">
+            <p className="text-[11px] sm:text-base font-bold text-black flex items-center gap-1.5 uppercase tracking-wider animate-in fade-in slide-in-from-left-2">
               <span>{t.hero.greeting}, {userName}</span>
-              <span className="text-base sm:text-lg">👋</span>
+              <span className="text-sm sm:text-xl">👋</span>
             </p>
-            <h1 className="text-2xl sm:text-4xl font-black text-slate-950 tracking-tight leading-tight">
-              {t.hero.title}
+            <h1 className="text-xl sm:text-5xl lg:text-7xl font-black text-black tracking-tight leading-[1.2] sm:leading-[1.05]">
+              {language === 'so' ? (
+                <>
+                  Hel <span className="text-blue-600">Fursaddaada Caalamiga ah</span> ee Xigta
+                </>
+              ) : (
+                <>
+                  Find Your Next <span className="text-blue-600">Global Opportunity</span>
+                </>
+              )}
             </h1>
-            <p className="text-xs text-slate-500 font-medium hidden sm:block">
+            <p className="text-[11px] sm:text-base text-slate-500 font-medium hidden sm:block max-w-lg">
               {t.hero.subtitle}
             </p>
           </div>
 
           {/* 3D Blue Earth Globe with Located Scholars */}
-          <div className="shrink-0">
-            <GlobalScholarsGlobe size="md" />
+          <div className="shrink-0 flex justify-end">
+            <div className="relative group">
+              <GlobalScholarsGlobe size="md" className="scale-100 sm:scale-110 lg:scale-125 xl:scale-135 transition-transform duration-500" />
+              {/* Optional ambient glow for laptop view */}
+              <div className="absolute inset-0 bg-blue-400/10 blur-3xl -z-10 rounded-full animate-pulse" />
+            </div>
           </div>
         </div>
 
@@ -170,6 +182,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </span>
             {[
               { label: '🇬🇧 UK Master’s without IELTS', q: 'UK Master without IELTS' },
+              { label: '📍 Hargeisa, Somaliland Scholars', q: 'Somaliland' },
               { label: '🇩🇪 Germany DAAD Fully Funded', q: 'Germany DAAD fully funded' },
               { label: '🇹🇷 Turkey Undergraduate + Housing', q: 'Turkey undergraduate stipend' },
               { label: '🇺🇸 USA Fulbright 100% Covered', q: 'USA Fulbright fully funded' },

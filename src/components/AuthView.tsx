@@ -186,48 +186,7 @@ export const AuthView: React.FC<AuthViewProps> = ({
           </button>
         </div>
 
-        {isDomainError ? (
-          <div className="p-4 rounded-2xl bg-blue-50 border border-blue-300 text-blue-900 space-y-3 animate-in fade-in" id="auth-unauthorized-domain-alert">
-            <div className="flex items-start gap-2.5">
-              <AlertCircle className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-              <div>
-                <h4 className="font-bold text-xs sm:text-sm text-blue-950">Domain-ka App-ka kuma jiro Firebase (Authorized Domains)</h4>
-                <p className="text-xs text-blue-800 mt-0.5 leading-relaxed">
-                  Google Sign-In wuxuu u baahan yahay in domain-kan lagu daro liiska <strong>Authorized Domains</strong> ee Firebase Console.
-                </p>
-              </div>
-            </div>
-
-            {/* Domain box with Copy Button */}
-            <div className="bg-white p-2.5 rounded-xl border border-blue-200 flex items-center justify-between gap-2 shadow-xs">
-              <code className="text-[11px] sm:text-xs font-mono text-slate-800 break-all select-all font-bold">
-                {currentHostname || 'ais-dev-cjmxa2yvpgvrsf6ypn7zqr-221043921390.europe-west2.run.app'}
-              </code>
-              <button
-                type="button"
-                onClick={handleCopyDomain}
-                className="px-2.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold flex items-center gap-1 shrink-0 transition-colors cursor-pointer shadow-xs"
-              >
-                {copiedDomain ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedDomain ? 'La koobiyay!' : 'Copy Domain'}</span>
-              </button>
-            </div>
-
-            <div className="text-[11px] text-blue-900 space-y-1 bg-blue-100/60 p-2.5 rounded-xl border border-blue-200/80">
-              <p className="font-bold">Tallaabooyinka fudud (1 daqiiqo):</p>
-              <ol className="list-decimal list-inside space-y-0.5 text-blue-800">
-                <li>Gal <strong>Firebase Console</strong> &rarr; mashruucaaga <strong>fursad-c833a</strong></li>
-                <li>Guji <strong>Authentication</strong> &rarr; tab-ka <strong>Settings</strong> &rarr; <strong>Authorized domains</strong></li>
-                <li>Guji <strong>Add domain</strong>, ku dheji domain-ka kore, kadibna guji <strong>Save</strong></li>
-              </ol>
-            </div>
-
-            <div className="text-[11px] text-emerald-800 font-bold bg-emerald-50 border border-emerald-200 p-2.5 rounded-xl flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-              <span>Talo degdeg ah: Waxaad isla hadda si toos ah ugu geli kartaa <strong>Email & Password</strong> hoose adigoon u baahnayn Authorized Domains!</span>
-            </div>
-          </div>
-        ) : generalError ? (
+        {generalError ? (
           <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-bold flex items-center gap-2.5">
             <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
             <span>{generalError}</span>

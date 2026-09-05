@@ -36,7 +36,7 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
     xl: 'w-24 h-24 sm:w-28 sm:h-28 text-2xl sm:text-3xl'
   };
 
-  // Get first letter of name or email (e.g. 'S' for somfxstore@gmail.com)
+  // Get first letter of name or email (e.g. 'H' for hamze.zakarie@gmail.com)
   const displayName = name?.trim() || email?.split('@')[0] || 'U';
   const initial = displayName[0].toUpperCase();
 

@@ -93,6 +93,19 @@ const scholarsList: ScholarPin[] = [
     orbitAngle: 270,
     orbitRadiusX: 49,
     orbitRadiusY: 25
+  },
+  {
+    id: 's7',
+    name: 'Mustafe H.',
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&auto=format&fit=crop&q=80',
+    country: 'Somaliland',
+    flag: '',
+    city: 'Hargeisa',
+    program: 'Chevening Alumni',
+    coords: { x: 72, y: 62 },
+    orbitAngle: 120,
+    orbitRadiusX: 51,
+    orbitRadiusY: 27
   }
 ];
 
@@ -215,6 +228,10 @@ export const GlobalScholarsGlobe: React.FC<GlobalScholarsGlobeProps> = ({
             <feGaussianBlur stdDeviation="3" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
           </filter>
+
+          <clipPath id="globeClip">
+            <circle cx="200" cy="200" r="140" />
+          </clipPath>
         </defs>
 
         {/* 1. Outer Orbit Ring 1 (Tilted Perspective with located scholars) */}
@@ -260,84 +277,16 @@ export const GlobalScholarsGlobe: React.FC<GlobalScholarsGlobeProps> = ({
           className="opacity-80"
         />
 
-        {/* 3. Base Earth 3D Blue Sphere */}
-        <circle
-          cx="200"
-          cy="200"
-          r="140"
-          fill="url(#earthOceanDeep)"
+        {/* 3. Base Earth Image matching the requested URL */}
+        <image
+          href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr4ToSko8vzZBRjrYbaME7z9SRG1dZfqIClici7pCWpA&s=10"
+          x="60"
+          y="60"
+          width="280"
+          height="280"
+          clipPath="url(#globeClip)"
+          preserveAspectRatio="xMidYMid slice"
         />
-
-        {/* Latitude & Longitude Geodesic Grid (Subtle realistic 3D depth lines) */}
-        <g className="opacity-25">
-          <ellipse cx="200" cy="200" rx="140" ry="50" fill="none" stroke="#e0f2fe" strokeWidth="0.8" strokeDasharray="3 4" />
-          <ellipse cx="200" cy="200" rx="140" ry="95" fill="none" stroke="#e0f2fe" strokeWidth="0.8" strokeDasharray="3 4" />
-          <ellipse cx="200" cy="200" rx="65" ry="140" fill="none" stroke="#e0f2fe" strokeWidth="0.8" strokeDasharray="3 4" />
-          <ellipse cx="200" cy="200" rx="115" ry="140" fill="none" stroke="#e0f2fe" strokeWidth="0.8" strokeDasharray="3 4" />
-          <line x1="60" y1="200" x2="340" y2="200" stroke="#e0f2fe" strokeWidth="0.8" opacity="0.5" />
-          <line x1="200" y1="60" x2="200" y2="340" stroke="#e0f2fe" strokeWidth="0.8" opacity="0.5" />
-        </g>
-
-        {/* 4. Highly Visible, Detailed Continent Vector Shapes matching the image */}
-        <g filter="url(#continentShadow)" stroke="url(#continentStroke)" strokeWidth="1" strokeLinejoin="round" className="transition-transform duration-500">
-          
-          {/* Greenland (Top Center-Left) */}
-          <path
-            d="M145,70 C162,60 188,68 195,85 C200,98 194,116 178,124 C162,130 142,120 138,102 C135,88 140,75 145,70 Z
-               M130,92 C138,86 142,92 138,98 C132,102 128,96 130,92 Z"
-            fill="url(#continentShine)"
-          />
-
-          {/* North America (Alaska, Canada, USA, Florida, Mexico) */}
-          <path
-            d="M85,98 C95,80 120,88 135,102 C142,110 138,125 130,135 C138,142 145,152 135,168 C128,180 115,190 102,194 C92,196 85,182 88,165 C85,150 78,135 85,120 C78,110 80,102 85,98 Z
-               M112,192 C118,205 130,220 135,232 C138,242 128,245 122,236 C116,225 110,208 112,192 Z
-               M145,215 C155,218 152,226 145,224 C140,222 142,216 145,215 Z
-               M128,148 C135,155 130,165 122,160 C118,154 122,148 128,148 Z"
-            fill="url(#continentShine)"
-          />
-
-          {/* South America (Brazil, Horn, Andes, Patagonia) */}
-          <path
-            d="M125,245 C145,235 168,248 185,265 C198,282 196,315 182,342 C168,365 152,372 142,355 C132,328 122,290 118,268 C115,255 120,248 125,245 Z"
-            fill="url(#continentShine)"
-          />
-
-          {/* Europe & Scandinavia (British Isles, France, Germany, Scandinavia, Mediterranean) */}
-          <path
-            d="M198,92 C212,82 232,95 242,110 C248,122 235,138 222,142 C210,145 198,132 196,118 C194,105 195,95 198,92 Z
-               M175,120 C184,112 190,122 185,132 C178,136 172,128 175,120 Z
-               M215,130 C238,124 255,138 248,152 C240,162 222,164 212,152 C208,142 212,132 215,130 Z
-               M255,102 C275,98 288,115 280,132 C270,142 252,136 255,102 Z"
-            fill="url(#continentShine)"
-          />
-
-          {/* Africa (Sahara, West Africa, Somalia/Horn of Africa, Great Lakes, South Africa) */}
-          <path
-            d="M178,172 C210,160 258,168 285,182 C302,202 308,232 288,260 C278,285 268,312 248,348 C238,360 225,350 216,322 C204,288 176,252 170,220 C166,192 172,178 178,172 Z"
-            fill="url(#africaGradient)"
-          />
-
-          {/* Madagascar */}
-          <path
-            d="M292,290 C302,285 305,310 295,324 C288,328 285,312 292,290 Z"
-            fill="url(#continentShine)"
-          />
-
-          {/* Middle East & Arabian Peninsula */}
-          <path
-            d="M270,180 C290,174 308,188 322,208 C328,228 315,244 298,245 C285,242 278,222 274,202 C272,190 268,184 270,180 Z"
-            fill="url(#continentShine)"
-          />
-
-          {/* Eurasia / Asia Coastline & Indian Subcontinent */}
-          <path
-            d="M290,132 C320,126 348,145 358,175 C364,202 348,228 332,234 C318,230 305,208 296,182 C290,160 285,142 290,132 Z
-               M312,215 C328,218 335,242 324,260 C314,264 308,248 312,215 Z"
-            fill="url(#continentShine)"
-          />
-
-        </g>
 
         {/* 5. 3D Spherical Specular Light & Shadow Dome Overlays */}
         {/* Specular gloss glow on upper-right quadrant */}
@@ -496,9 +445,15 @@ export const GlobalScholarsGlobe: React.FC<GlobalScholarsGlobeProps> = ({
       )}
 
       {/* Mini Scholars Counter Badge at top right */}
-      <div className="absolute -top-2 -right-2 z-20 bg-blue-600/90 text-white backdrop-blur-xs px-2.5 py-1 rounded-full text-[10px] font-black border border-white/20 shadow-md flex items-center gap-1">
-        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-        <span>150+ Countries</span>
+      <div className="absolute -top-4 -right-2 z-20 flex flex-col gap-1 items-end">
+        <div className="bg-blue-600/90 text-white backdrop-blur-xs px-2.5 py-1 rounded-full text-[10px] font-black border border-white/20 shadow-md flex items-center gap-1">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+          <span>150+ Countries</span>
+        </div>
+        <div className="bg-black/80 text-white backdrop-blur-xs px-2.5 py-1 rounded-full text-[9px] font-black border border-white/10 shadow-md flex items-center gap-1 animate-in fade-in slide-in-from-right-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+          <span>Hargeisa, Somaliland</span>
+        </div>
       </div>
     </div>
   );

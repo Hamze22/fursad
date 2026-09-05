@@ -23,7 +23,8 @@ import {
   Globe2,
   ChevronRight,
   Compass,
-  Award
+  Award,
+  ShieldCheck
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -61,7 +62,7 @@ export const Header: React.FC<HeaderProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [showProfileMenu, setShowProfileMenu] = useState<boolean>(false);
   
-  const isOwner = userProfile.email.toLowerCase() === 'somfxstore@gmail.com' || userProfile.role === 'owner';
+  const isOwner = userProfile.email.toLowerCase() === 'hamze.zakarie@gmail.com' || userProfile.role === 'owner';
 
   const navLinks = [
     { id: 'home', label: t.nav.home, icon: null },
@@ -72,12 +73,13 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'saved', label: t.nav.saved, icon: Bookmark, badge: savedCount },
     { id: 'tracker', label: t.nav.tracker, icon: FileCheck2, badge: applicationCount },
     { id: 'mentorship', label: t.nav.mentorship, icon: Users },
+    ...(isOwner ? [{ id: 'admin', label: t.nav.admin, icon: ShieldCheck }] : []),
   ];
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs" id="fursad-header" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Main navigation header */}
-      <div className="w-full max-w-[1600px] mx-auto px-3 sm:px-6 h-15 sm:h-16 flex items-center justify-between gap-3">
+      <div className="w-full mx-auto px-3 sm:px-6 h-15 sm:h-16 flex items-center justify-between gap-3">
         {/* Brand Logo & App Icon Badge */}
         <div className="flex items-center gap-2 shrink-0">
           <button 

@@ -160,7 +160,7 @@ ${language === 'ar' ? '1. العثور على منح دراسية ممولة ب�
   };
 
   return (
-    <div className="w-full max-w-[1600px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-5" id="fursad-ai-section-view" dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className="w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-5" id="fursad-ai-section-view" dir={isRTL ? 'rtl' : 'ltr'}>
       
       {/* Ready Application Prompts Grid */}
       <div className="space-y-2.5">
