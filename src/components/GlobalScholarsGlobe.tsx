@@ -93,19 +93,6 @@ const scholarsList: ScholarPin[] = [
     orbitAngle: 270,
     orbitRadiusX: 49,
     orbitRadiusY: 25
-  },
-  {
-    id: 's7',
-    name: 'Mustafe H.',
-    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&auto=format&fit=crop&q=80',
-    country: 'Somaliland',
-    flag: '',
-    city: 'Hargeisa',
-    program: 'Chevening Alumni',
-    coords: { x: 72, y: 62 },
-    orbitAngle: 120,
-    orbitRadiusX: 51,
-    orbitRadiusY: 27
   }
 ];
 
@@ -445,14 +432,10 @@ export const GlobalScholarsGlobe: React.FC<GlobalScholarsGlobeProps> = ({
       )}
 
       {/* Mini Scholars Counter Badge at top right */}
-      <div className="absolute -top-4 -right-2 z-20 flex flex-col gap-1 items-end">
-        <div className="bg-blue-600/90 text-white backdrop-blur-xs px-2.5 py-1 rounded-full text-[10px] font-black border border-white/20 shadow-md flex items-center gap-1">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+      <div className="absolute -top-2 -right-2 z-20 flex flex-col gap-1 items-end">
+        <div className="bg-blue-600/90 text-white backdrop-blur-xs px-1.5 py-0.5 rounded-full text-[8px] sm:text-[9px] font-black border border-white/20 shadow-md flex items-center gap-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
           <span>150+ Countries</span>
-        </div>
-        <div className="bg-black/80 text-white backdrop-blur-xs px-2.5 py-1 rounded-full text-[9px] font-black border border-white/10 shadow-md flex items-center gap-1 animate-in fade-in slide-in-from-right-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-          <span>Hargeisa, Somaliland</span>
         </div>
       </div>
     </div>

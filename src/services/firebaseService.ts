@@ -64,22 +64,25 @@ export const firebaseService = {
           email: user.email || '',
           role: isProjectOwner(user.email) ? 'owner' : 'user',
           avatar: googleAvatar,
-          countryOrigin: 'Somalia',
-          currentCountry: 'Somalia',
-          currentCity: 'Mogadishu',
+          countryOrigin: '',
+          currentCountry: '',
+          currentCity: '',
           educationLevel: 'bachelor',
-          fieldOfStudy: 'Computer Science',
+          fieldOfStudy: '',
+          age: undefined,
+          gender: '',
+          dateOfBirth: '',
           graduationYear: 2026,
-          skills: ['Academic Research', 'Leadership'],
+          skills: [],
           languages: ['Somali', 'English'],
           hasIelts: false,
           hasToefl: false,
           hasMoiCertificate: true,
-          preferredCountries: ['Turkey', 'Germany', 'United Kingdom', 'Canada'],
-          preferredCategories: ['scholarship', 'fellowship'],
+          preferredCountries: [],
+          preferredCategories: ['scholarship'],
           fundingPreference: 'fully_funded',
           careerGoals: '',
-          profileStrength: 75,
+          profileStrength: 30, // Lower strength because fields are missing
           subscription: isProjectOwner(user.email) ? 'pro' : 'free',
           notificationsEnabled: true,
           savedOppIds: []
@@ -121,8 +124,14 @@ export const firebaseService = {
     countryOrigin?: string;
     currentCity?: string;
     fieldOfStudy?: string;
+    age?: number;
+    gender?: string;
+    dateOfBirth?: string;
   }): Promise<{ user: User; profile: UserProfile }> {
-    const { email, pass, name, educationLevel, countryOrigin, currentCity, fieldOfStudy } = params;
+    const { 
+      email, pass, name, educationLevel, countryOrigin, 
+      currentCity, fieldOfStudy, age, gender, dateOfBirth 
+    } = params;
     
     try {
       const result = await createUserWithEmailAndPassword(auth, email.trim(), pass);
@@ -136,11 +145,14 @@ export const firebaseService = {
         email: email.trim(),
         role: isOwner ? 'owner' : 'user',
         avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(name || email)}`,
-        countryOrigin: countryOrigin || 'Somalia',
-        currentCountry: countryOrigin || 'Somalia',
-        currentCity: currentCity || 'Mogadishu',
+        countryOrigin: countryOrigin || '',
+        currentCountry: countryOrigin || '',
+        currentCity: currentCity || '',
         educationLevel: educationLevel || 'bachelor',
-        fieldOfStudy: fieldOfStudy || 'Computer Science & Technology',
+        fieldOfStudy: fieldOfStudy || '',
+        age: age,
+        gender: gender || '',
+        dateOfBirth: dateOfBirth || '',
         graduationYear: 2026,
         skills: ['Academic Research', 'Leadership', 'English Writing'],
         languages: ['Somali', 'English', 'Arabic'],
@@ -181,11 +193,11 @@ export const firebaseService = {
           email: user.email || email,
           role: isProjectOwner(user.email) ? 'owner' : 'user',
           avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(user.email || 'user')}`,
-          countryOrigin: 'Somalia',
-          currentCountry: 'Somalia',
-          currentCity: 'Mogadishu',
+          countryOrigin: '',
+          currentCountry: '',
+          currentCity: '',
           educationLevel: 'bachelor',
-          fieldOfStudy: 'Computer Science',
+          fieldOfStudy: '',
           graduationYear: 2026,
           skills: ['Research', 'Leadership'],
           languages: ['Somali', 'English'],

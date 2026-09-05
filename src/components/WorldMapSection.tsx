@@ -58,7 +58,7 @@ export const WorldMapSection: React.FC<WorldMapSectionProps> = ({
         </div>
 
         {/* Global Statistics Banner */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto text-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 max-w-6xl mx-auto text-center">
           <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
             <span className="text-2xl sm:text-3xl font-black text-blue-600 block">150+</span>
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Countries Represented</span>
@@ -68,7 +68,11 @@ export const WorldMapSection: React.FC<WorldMapSectionProps> = ({
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Fully Funded Awards</span>
           </div>
           <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
-            <span className="text-2xl sm:text-3xl font-black text-emerald-600 block">100%</span>
+            <span className="text-2xl sm:text-3xl font-black text-emerald-600 block">Hargeisa</span>
+            <span className="text-[10px] font-black text-slate-500 uppercase tracking-wider">Somaliland Hub Capital</span>
+          </div>
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+            <span className="text-2xl sm:text-3xl font-black text-blue-600 block">100%</span>
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Verified Official Portals</span>
           </div>
           <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">

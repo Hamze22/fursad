@@ -164,7 +164,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <button
               type="button"
               onClick={onOpenAI}
-              className="hidden sm:flex items-center gap-1.5 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-xs shadow-xs hover:from-blue-700 hover:to-indigo-700 transition-all cursor-pointer shrink-0"
+              className="flex items-center gap-1.5 px-3 py-3 sm:px-4 sm:py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-xs shadow-xs hover:from-blue-700 hover:to-indigo-700 transition-all cursor-pointer shrink-0"
               id="hero-ai-advisor-btn"
             >
               <Bot className="w-4 h-4" />
@@ -182,7 +182,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </span>
             {[
               { label: '🇬🇧 UK Master’s without IELTS', q: 'UK Master without IELTS' },
-              { label: '📍 Hargeisa, Somaliland Scholars', q: 'Somaliland' },
               { label: '🇩🇪 Germany DAAD Fully Funded', q: 'Germany DAAD fully funded' },
               { label: '🇹🇷 Turkey Undergraduate + Housing', q: 'Turkey undergraduate stipend' },
               { label: '🇺🇸 USA Fulbright 100% Covered', q: 'USA Fulbright fully funded' },

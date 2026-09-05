@@ -145,9 +145,11 @@ export const Header: React.FC<HeaderProps> = ({
             id="header-notification-bell"
           >
             <Bell className="w-4 h-4 text-slate-700 group-hover:text-blue-600 transition-colors" />
-            <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-white shadow-xs">
-              {applicationCount > 0 ? applicationCount + 2 : 3}
-            </span>
+            {isLoggedIn && (applicationCount > 0 || true) && (
+              <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-white shadow-xs">
+                {applicationCount > 0 ? applicationCount : 0}
+              </span>
+            )}
           </button>
 
           {/* Tracker Counter Button */}

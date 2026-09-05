@@ -42,10 +42,13 @@ export const AuthView: React.FC<AuthViewProps> = ({
   const [regEmail, setRegEmail] = useState('');
   const [regPassword, setRegPassword] = useState('');
   const [regConfirmPassword, setRegConfirmPassword] = useState('');
-  const [countryOrigin, setCountryOrigin] = useState('Somalia');
-  const [currentCity, setCurrentCity] = useState('Mogadishu');
-  const [educationLevel, setEducationLevel] = useState<DegreeLevel>('bachelor');
-  const [fieldOfStudy, setFieldOfStudy] = useState('Computer Science & IT');
+  const [countryOrigin, setCountryOrigin] = useState('');
+  const [currentCity, setCurrentCity] = useState('');
+  const [educationLevel, setEducationLevel] = useState<DegreeLevel>('' as any);
+  const [fieldOfStudy, setFieldOfStudy] = useState('');
+  const [age, setAge] = useState<string>('');
+  const [gender, setGender] = useState<string>('');
+  const [dateOfBirth, setDateOfBirth] = useState<string>('');
   const [regLoading, setRegLoading] = useState(false);
   const [regError, setRegError] = useState<string | null>(null);
 
@@ -116,7 +119,10 @@ export const AuthView: React.FC<AuthViewProps> = ({
         countryOrigin,
         currentCity,
         educationLevel,
-        fieldOfStudy
+        fieldOfStudy,
+        age: age ? parseInt(age) : undefined,
+        gender,
+        dateOfBirth
       });
       onAuthSuccess(profile);
     } catch (err: any) {
@@ -387,6 +393,7 @@ export const AuthView: React.FC<AuthViewProps> = ({
                     type="text"
                     value={countryOrigin}
                     onChange={(e) => setCountryOrigin(e.target.value)}
+                    placeholder="e.g. Somaliland"
                     className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:border-blue-600"
                   />
                 </div>
@@ -396,6 +403,7 @@ export const AuthView: React.FC<AuthViewProps> = ({
                     type="text"
                     value={currentCity}
                     onChange={(e) => setCurrentCity(e.target.value)}
+                    placeholder="e.g. Hargeisa"
                     className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:border-blue-600"
                   />
                 </div>
@@ -404,16 +412,13 @@ export const AuthView: React.FC<AuthViewProps> = ({
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1.5">Education</label>
-                  <select
+                  <input
+                    type="text"
                     value={educationLevel}
-                    onChange={(e) => setEducationLevel(e.target.value as DegreeLevel)}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-900 focus:bg-white focus:outline-none focus:border-blue-600"
-                  >
-                    <option value="high_school">High School</option>
-                    <option value="bachelor">Bachelor</option>
-                    <option value="master">Master</option>
-                    <option value="phd">PhD</option>
-                  </select>
+                    onChange={(e) => setEducationLevel(e.target.value as any)}
+                    placeholder="e.g. Bachelor, Master"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:border-blue-600"
+                  />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1.5">Field of Study</label>
@@ -421,8 +426,42 @@ export const AuthView: React.FC<AuthViewProps> = ({
                     type="text"
                     value={fieldOfStudy}
                     onChange={(e) => setFieldOfStudy(e.target.value)}
-                    placeholder="Computer Science"
+                    placeholder="e.g. IT, Medicine"
                     className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:border-blue-600"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-3 gap-2">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1.5">Age</label>
+                  <input
+                    type="number"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    placeholder="20"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:border-blue-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1.5">Gender</label>
+                  <select
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-900 focus:bg-white focus:outline-none focus:border-blue-600"
+                  >
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1.5">Birth Date</label>
+                  <input
+                    type="date"
+                    value={dateOfBirth}
+                    onChange={(e) => setDateOfBirth(e.target.value)}
+                    className="w-full px-2 py-2 rounded-xl bg-slate-50 border border-slate-200 text-[10px] text-slate-900 focus:bg-white focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>

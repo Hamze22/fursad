@@ -95,6 +95,9 @@ export interface UserProfile {
   educationLevel: DegreeLevel;
   targetDegree?: DegreeLevel;
   fieldOfStudy: string;
+  age?: number;
+  gender?: string;
+  dateOfBirth?: string;
   gpa?: string; // e.g. "3.5", "3.8", "85%"
   graduationYear: number;
   skills: string[];

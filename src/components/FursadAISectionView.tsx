@@ -328,8 +328,8 @@ ${language === 'ar' ? '1. العثور على منح دراسية ممولة ب�
           ))}
         </div>
 
-        {/* Chat Input Console */}
-        <div className="p-3 sm:p-4 bg-white border-t border-slate-200">
+        {/* Chat Input Console - Sticky to bottom for better visibility on scroll */}
+        <div className="p-3 sm:p-4 bg-white border-t border-slate-200 sticky bottom-[64px] lg:bottom-0 z-10 shadow-[0_-8px_15px_rgba(0,0,0,0.04)] sm:relative sm:shadow-none sm:bottom-auto">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -350,11 +350,11 @@ ${language === 'ar' ? '1. العثور على منح دراسية ممولة ب�
             <button
               type="submit"
               disabled={!inputText.trim() || isLoading}
-              className="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white font-extrabold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-blue-600/20 transition-all cursor-pointer shrink-0"
+              className="px-4 py-3 sm:px-5 sm:py-3 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white font-extrabold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-blue-600/20 transition-all cursor-pointer shrink-0"
               id="ai-console-send-btn"
             >
               <Send className="w-4 h-4" />
-              <span className="hidden sm:inline">{t.ai.askButton}</span>
+              <span>{t.ai.askButton}</span>
             </button>
           </form>
         </div>

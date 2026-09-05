@@ -170,6 +170,39 @@ export const ProfileSettingsView: React.FC<ProfileSettingsViewProps> = ({
                   className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">Age</label>
+                <input
+                  type="number"
+                  value={profile.age || ''}
+                  onChange={(e) => setProfile({ ...profile, age: e.target.value ? parseInt(e.target.value) : undefined })}
+                  className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">Gender</label>
+                <select
+                  value={profile.gender || ''}
+                  onChange={(e) => setProfile({ ...profile, gender: e.target.value })}
+                  className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">Date of Birth</label>
+                <input
+                  type="date"
+                  value={profile.dateOfBirth || ''}
+                  onChange={(e) => setProfile({ ...profile, dateOfBirth: e.target.value })}
+                  className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
             </div>
           </div>
 

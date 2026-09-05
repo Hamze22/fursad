@@ -129,22 +129,22 @@ function AppContent() {
               email: authUser.email || '',
               role: authUser.email === 'hamze.zakarie@gmail.com' ? 'owner' : 'user',
               avatar: googleAvatar,
-              countryOrigin: 'Somalia',
-              currentCountry: 'Somalia',
-              currentCity: 'Mogadishu',
-              educationLevel: 'bachelor',
-              fieldOfStudy: 'Computer Science',
-              graduationYear: 2026,
-              skills: ['Academic Research', 'Leadership'],
-              languages: ['Somali', 'English'],
+              countryOrigin: '',
+              currentCountry: '',
+              currentCity: '',
+              educationLevel: '' as any,
+              fieldOfStudy: '',
+              graduationYear: new Date().getFullYear() + 2,
+              skills: [],
+              languages: [],
               hasIelts: false,
               hasToefl: false,
-              hasMoiCertificate: true,
-              preferredCountries: ['Turkey', 'Germany', 'United Kingdom', 'Canada'],
-              preferredCategories: ['scholarship', 'fellowship'],
+              hasMoiCertificate: false,
+              preferredCountries: [],
+              preferredCategories: [],
               fundingPreference: 'fully_funded',
-              careerGoals: 'Pursuing global scholarships & leadership opportunities.',
-              profileStrength: 80,
+              careerGoals: '',
+              profileStrength: 10,
               subscription: authUser.email === 'hamze.zakarie@gmail.com' ? 'pro' : 'free',
               notificationsEnabled: true,
               savedOppIds: []
@@ -391,16 +391,34 @@ function AppContent() {
 
   if (isAuthLoading) {
     return (
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center space-y-4">
-        <div className="relative">
-          <Loader2 className="w-12 h-12 text-blue-600 animate-spin" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-blue-400" />
+      <div className="fixed inset-0 bg-white flex flex-col items-center justify-center z-[100] p-6 text-center">
+        <div className="relative space-y-12 animate-in fade-in zoom-in duration-700">
+          <div className="flex justify-center scale-125">
+            <FursadLogo size="xl" showText={true} />
+          </div>
+          
+          <div className="flex flex-col items-center gap-6">
+            <div className="relative">
+              <div className="w-12 h-12 rounded-full border-4 border-slate-100 border-t-blue-600 animate-spin" />
+            </div>
+            <div className="space-y-1">
+              <p className="text-slate-900 font-black text-sm tracking-[0.3em] uppercase">
+                Verifying
+              </p>
+              <div className="flex gap-1 justify-center">
+                <div className="w-1 h-1 rounded-full bg-blue-600 animate-bounce [animation-delay:-0.3s]" />
+                <div className="w-1 h-1 rounded-full bg-blue-600 animate-bounce [animation-delay:-0.15s]" />
+                <div className="w-1 h-1 rounded-full bg-blue-600 animate-bounce" />
+              </div>
+            </div>
           </div>
         </div>
-        <div className="text-center space-y-1">
-          <p className="text-base font-black text-slate-900 tracking-tight">FURSAD</p>
-          <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Verifying Identity...</p>
+
+        {/* Bottom Tagline */}
+        <div className="absolute bottom-12 left-0 right-0">
+          <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.25em]">
+            FURSAD • GLOBAL OPPORTUNITIES
+          </p>
         </div>
       </div>
     );
@@ -708,7 +726,7 @@ function AppContent() {
           />
         ) : currentTab === 'tracker' ? (
           <ApplicationTrackerView
-            applications={applications}
+            applications={isLoggedIn ? applications : []}
             isLoggedIn={isLoggedIn}
             onUpdateApplication={async (app) => {
               await firebaseService.saveApplication(userProfile.id, app);
@@ -725,7 +743,7 @@ function AppContent() {
         ) : currentTab === 'saved' ? (
           <SavedOpportunitiesView
             opportunities={opportunities}
-            savedIds={savedOppIds}
+            savedIds={isLoggedIn ? savedOppIds : []}
             onToggleSave={handleToggleSave}
             onViewDetails={(opp) => setSelectedOpportunity(opp)}
             onTrackApplyClick={handleTrackApplyClick}

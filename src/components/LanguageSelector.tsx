@@ -195,8 +195,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         aria-haspopup="true"
         title="Select Language / Dooro Luuqadda / اختر اللغة"
       >
-        <Globe2 className="w-4 h-4 text-blue-600 shrink-0" />
-        <span className="font-extrabold text-xs text-slate-900 hidden sm:inline">
+        <span className="font-extrabold text-xs text-slate-900">
           {currentLanguageOption.nativeName}
         </span>
         <ChevronDown 
